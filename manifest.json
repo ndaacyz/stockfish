@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Chess Analysis Helper",
+  "version": "1.0.0",
+  "description": "Stockfish analysis for chess positions (Educational purposes only)",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.chess.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "default-icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.chess.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["stockfish.js"],
+      "matches": ["https://www.chess.com/*"]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      background: #312e2b;
+      color: #fff;
+    }
+    
+    .warning {
+      background: #d32f2f;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 12px;
+    }
+    
+    .container {
+      background: #262421;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: #81b64c;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #6fa039;
+    }
+    
+    .btn-danger {
+      background: #d32f2f;
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      background: #b71c1c;
+    }
+    
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 12px;
+    }
+    
+    .status.active {
+      background: #2e7d32;
+    }
+    
+    .status.inactive {
+      background: #555;
+    }
+    
+    .best-move {
+      background: #1976d2;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-align: center;
+    }
+    
+    .best-move .move {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+    
+    .best-move .eval {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .depth-control {
+      margin: 10px 0;
+    }
+    
+    .depth-control label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+    
+    input[type="range"] {
+      width: 100%;
+    }
+    
+    .depth-value {
+      text-align: center;
+      font-weight: bold;
+      color: #81b64c;
+    }
+  </style>
+</head>
+<body>
+  <div class="warning">
+    ⚠️ WARNING: Using this during live games violates Chess.com ToS and will result in account ban. Use only for analysis!
+  </div>
+  
+  <div class="container">
+    <h3 style="margin-top: 0;">Stockfish Analysis</h3>
+    
+    <div id="status" class="status inactive">
+      Status: Inactive
+    </div>
+    
+    <div class="depth-control">
+      <label>Analysis Depth: <span id="depthValue" class="depth-value">18</span></label>
+      <input type="range" id="depthSlider" min="10" max="25" value="18">
+    </div>
+    
+    <div id="bestMoveDisplay" style="display: none;" class="best-move">
+      <div class="eval" id="evaluation">Evaluation: 0.0</div>
+      <div class="move" id="bestMove">--</div>
+      <div style="font-size: 12px; margin-top: 5px;">Best Move</div>
+    </div>
+    
+    <button id="toggleBtn" class="btn-primary">Start Analysis</button>
+    <button id="analyzeBtn" class="btn-primary">Analyze Current Position</button>
+    <button id="stopBtn" class="btn-danger" style="display: none;">Stop Engine</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
